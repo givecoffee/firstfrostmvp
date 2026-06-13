@@ -1,0 +1,85 @@
+<svg width="1280" height="320" viewBox="0 0 1280 320" xmlns="http://www.w3.org/2000/svg" role="img">
+  <title>FirstFrost — grow-tracking backend</title>
+  <desc>FirstFrost project banner. Dark greenhouse-night background, botanical hex grid on the right, serif wordmark and mono tagline on the left.</desc>
+
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300&family=JetBrains+Mono:wght@400;500&display=swap');
+      .wm  { font-family: 'Fraunces', Georgia, serif; font-size: 96px; font-weight: 300; letter-spacing: -3px; fill: #e4f5eb; }
+      .tag { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 15px; font-weight: 500; letter-spacing: 6px; fill: #7ec99a; }
+      .eye { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 12.5px; font-weight: 400; letter-spacing: 3px; fill: #5a8c6e; }
+      .stk { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 12.5px; font-weight: 400; letter-spacing: 2px; fill: #4a7a5e; }
+    </style>
+
+    <linearGradient id="hexfade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#071410" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#071410" stop-opacity="0"/>
+    </linearGradient>
+
+    <clipPath id="hexclip">
+      <rect x="600" y="-20" width="700" height="360"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1280" height="320" fill="#071410"/>
+
+  <g clip-path="url(#hexclip)" fill="none" stroke="#1c4a2c" stroke-width="1.2" opacity="0.9">
+    <polygon points="743,64 743,116 698,142 653,116 653,64 698,38"/>
+    <polygon points="743,154 743,206 698,232 653,206 653,154 698,128"/>
+    <polygon points="743,244 743,296 698,322 653,296 653,244 698,218"/>
+    <polygon points="821,19 821,71 776,97 731,71 731,19 776,-7"/>
+    <polygon points="821,109 821,161 776,187 731,161 731,109 776,83"/>
+    <polygon points="821,199 821,251 776,277 731,251 731,199 776,173"/>
+    <polygon points="821,289 821,341 776,367 731,341 731,289 776,263"/>
+    <polygon points="899,64 899,116 854,142 809,116 809,64 854,38"/>
+    <polygon points="899,154 899,206 854,232 809,206 809,154 854,128"/>
+    <polygon points="899,244 899,296 854,322 809,296 809,244 854,218"/>
+    <polygon points="977,19 977,71 932,97 887,71 887,19 932,-7"/>
+    <polygon points="977,109 977,161 932,187 887,161 887,109 932,83"/>
+    <polygon points="977,199 977,251 932,277 887,251 887,199 932,173"/>
+    <polygon points="977,289 977,341 932,367 887,341 887,289 932,263"/>
+    <polygon points="1055,64 1055,116 1010,142 965,116 965,64 1010,38"/>
+    <polygon points="1055,154 1055,206 1010,232 965,206 965,154 1010,128"/>
+    <polygon points="1055,244 1055,296 1010,322 965,296 965,244 1010,218"/>
+    <polygon points="1133,19 1133,71 1088,97 1043,71 1043,19 1088,-7"/>
+    <polygon points="1133,109 1133,161 1088,187 1043,161 1043,109 1088,83"/>
+    <polygon points="1133,199 1133,251 1088,277 1043,251 1043,199 1088,173"/>
+    <polygon points="1133,289 1133,341 1088,367 1043,341 1043,289 1088,263"/>
+    <polygon points="1211,64 1211,116 1166,142 1121,116 1121,64 1166,38"/>
+    <polygon points="1211,154 1211,206 1166,232 1121,206 1121,154 1166,128"/>
+    <polygon points="1211,244 1211,296 1166,322 1121,296 1121,244 1166,218"/>
+  </g>
+
+  <g clip-path="url(#hexclip)" opacity="0.9">
+    <circle cx="698"  cy="142" r="3.5" fill="#5ab87a"/>
+    <circle cx="698"  cy="232" r="3.5" fill="#5ab87a"/>
+    <circle cx="776"  cy="97"  r="3.5" fill="#5ab87a"/>
+    <circle cx="776"  cy="187" r="3.5" fill="#5ab87a"/>
+    <circle cx="776"  cy="277" r="3.5" fill="#5ab87a"/>
+    <circle cx="854"  cy="142" r="3.5" fill="#5ab87a"/>
+    <circle cx="854"  cy="232" r="3.5" fill="#5ab87a"/>
+    <circle cx="932"  cy="97"  r="3.5" fill="#5ab87a"/>
+    <circle cx="932"  cy="187" r="3.5" fill="#5ab87a"/>
+    <circle cx="932"  cy="277" r="3.5" fill="#5ab87a"/>
+    <circle cx="1010" cy="142" r="3.5" fill="#5ab87a"/>
+    <circle cx="1010" cy="232" r="3.5" fill="#5ab87a"/>
+    <circle cx="1088" cy="97"  r="3.5" fill="#5ab87a"/>
+    <circle cx="1088" cy="187" r="3.5" fill="#5ab87a"/>
+    <circle cx="1088" cy="277" r="3.5" fill="#5ab87a"/>
+    <circle cx="1166" cy="142" r="3.5" fill="#5ab87a"/>
+    <circle cx="1166" cy="232" r="3.5" fill="#5ab87a"/>
+  </g>
+
+  <rect x="600" y="0" width="200" height="320" fill="url(#hexfade)"/>
+
+  <line x1="52" y1="76" x2="52" y2="248" stroke="#2e6644" stroke-width="1.2"/>
+  <circle cx="52" cy="74"  r="3.5" fill="#5ab87a"/>
+  <circle cx="52" cy="250" r="3.5" fill="#5ab87a"/>
+
+  <text x="72" y="106" class="eye">AD350 · DATABASE TECHNOLOGY</text>
+  <text x="68" y="200" class="wm">FirstFrost</text>
+  <text x="72" y="232" class="tag">GROW-TRACKING BACKEND</text>
+  <line x1="72" y1="250" x2="560" y2="250" stroke="#1e3d2a" stroke-width="0.8"/>
+  <text x="72" y="271" class="stk">PostgreSQL · PostgREST · Supabase Auth · Postman</text>
+
+</svg>
