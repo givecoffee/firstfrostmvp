@@ -5,7 +5,7 @@
 </p>
 
 <h3 align="center">
-  Know the Frost. Grow with Confidence.
+  Grow with Confidence.
 </h3>
 
 <p align="center">
@@ -204,7 +204,6 @@ firstfrostmvp/
 * [ ] Frost alerts
 * [ ] Weather integrations
 * [ ] Plant encyclopedia
-* [ ] AI gardening assistant
 
 ---
 
