@@ -2,7 +2,7 @@
 
 Grow-tracking backend for outdoor gardeners and hydroponic growers. Building a first edition alongside the AD350 Database Technology course at North Seattle.
 
-Users organize plants into spaces, log sensor readings, and track care tasks. This repo covers the backend only: schema design, Supabase configuration, and a Postman test suite that exercises every concept from the course.
+Users organize plants into spaces, log sensor readings, and track care tasks. This repo covers the backend only: schema design, Supabase configuration, and a Postman test suite that exercises every concept.
 
 ---
 
