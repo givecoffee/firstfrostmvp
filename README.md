@@ -62,22 +62,6 @@ auth.users
 
 ---
 
-## AD350 Concepts Demonstrated
-
-| Week | Concept | Where |
-|------|---------|-------|
-| 1 | Cloud provisioning, status check | Step 1 |
-| 2 | Data type selection and justification | Step 2–3 |
-| 3 | CREATE, ALTER, TRUNCATE vs DROP | Step 3–4 |
-| 4 | Foreign keys, referential integrity | Step 6 |
-| 5 | EXPLAIN ANALYZE, B-Tree indexing | Step 11 |
-| 6 | JSONB, GIN index | Step 12 |
-| 7 | BETWEEN, ILIKE, IS NULL | Step 13 |
-| 8 | INNER, LEFT, FULL OUTER JOIN | Step 13 |
-| — | Triggers, RLS, API testing | Steps 7–9, 14–16 |
-
----
-
 ## Repository Structure
 
 ```
@@ -110,7 +94,7 @@ firstfrostmvp/
 
 ### 1. Supabase project
 
-Create a new project at [supabase.com](https://supabase.com) named `firstfrost-ad350`. Select the region closest to you. Save the database password somewhere secure.
+Create a new project at [supabase.com](https://supabase.com) named `xxxx`. Select the region closest to you. Save the database password somewhere secure.
 
 From **Settings → API**, copy the Project URL and anon key. You will need both for the Postman environment.
 
