@@ -1,7 +1,7 @@
 # FirstFrost
 
 <p align="center">
-  <img width="100%" alt="FirstFrost Banner" src="/assets/firstfrost-banner.png">
+  <img width="100%" alt="FirstFrost Banner" src="/assets/firstfrost_banner.svg">
 </p>
 
 <h3 align="center">
