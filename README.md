@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="100%" alt="FirstFrost Banner" src="/assets/firstfrost_banner2.svg">
+  <img width="100%" alt="FirstFrost Banner" src="/assets/banner.png">
 </p>
 
 <h3 align="center">
