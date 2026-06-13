@@ -1,11 +1,9 @@
-# FirstFrost
-
 <p align="center">
   <img width="100%" alt="FirstFrost Banner" src="/assets/firstfrost_banner.svg">
 </p>
 
 <h3 align="center">
-  Grow with Confidence.
+  FirstFrost
 </h3>
 
 <p align="center">
