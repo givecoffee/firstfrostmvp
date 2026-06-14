@@ -1,0 +1,29 @@
+{
+  "name": "firstfrost-ad350",
+  "values": [
+    {
+      "key": "baseUrl",
+      "value": "https://vjjiugjfniycsknhikkk.supabase.co",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "anonKey",
+      "value": "sb_publishable_aRaVh1T2S8MAYn8EOPCJMQ_ggmH0TtW",
+      "type": "secret",
+      "enabled": true
+    },
+    {
+      "key": "accessToken",
+      "value": "",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "userId",
+      "value": "",
+      "type": "default",
+      "enabled": true
+    }
+  ]
+}
