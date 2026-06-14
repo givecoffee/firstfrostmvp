@@ -2,7 +2,7 @@
   <img width="80%" alt="FirstFrost Banner" src="/assets/FirstFrost-StockBanner.png">
 </p>
 
-<sub>Stock Images (left to right) credits Maya Schwarzer, and Benjamin Combs.</sub>
+<sub alight="center">Stock Images (left to right) credits Maya Schwarzer, and Benjamin Combs.</sub>
 <h3 align="center">
   FirstFrost
 </h3>
