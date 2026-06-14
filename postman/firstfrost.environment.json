@@ -1,0 +1,71 @@
+{
+  "info": {
+    "name": "FirstFrost",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "FirstFrost grow-tracking backend. PostgreSQL on Supabase, tested through PostgREST. AD350 capstone."
+  },
+  "variable": [],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "const token = pm.environment.get('accessToken');",
+          "if (token) {",
+          "    pm.request.headers.add({",
+          "        key: 'Authorization',",
+          "        value: `Bearer ${token}`",
+          "    });",
+          "}",
+          "pm.request.headers.add({",
+          "    key: 'apikey',",
+          "    value: pm.environment.get('anonKey')",
+          "});"
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "Auth: Sign In",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const res = pm.response.json();",
+              "pm.environment.set('accessToken', res.access_token);",
+              "pm.environment.set('userId', res.user.id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"your-email@example.com\",\n  \"password\": \"your-password\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/auth/v1/token?grant_type=password",
+          "host": ["{{baseUrl}}"],
+          "path": ["auth", "v1", "token"],
+          "query": [
+            {
+              "key": "grant_type",
+              "value": "password"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
