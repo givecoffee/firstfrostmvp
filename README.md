@@ -6,9 +6,9 @@
   <sub> Stock Images (left to right) credits: Maya Schwarzer and Benjamin Combs. </sub>
 </p>
 
-<h3 align="center">
+<h2 align="center">
   FirstFrost
-</h3>
+</h2>
 
 <p align="center">
   Environmental intelligence for gardeners, growers, and small-scale food producers. 
