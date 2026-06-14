@@ -1,88 +1,182 @@
-# FirstFrost
+<p align="center">
+  <img width="100%" alt="FirstFrost Banner" src="/assets/banner.png">
+</p>
 
-Grow-tracking backend for outdoor gardeners and hydroponic growers. Building a first edition alongside the AD350 Database Technology course at North Seattle.
+<h3 align="center">
+  FirstFrost
+</h3>
 
-Users organize plants into spaces, log sensor readings, and track care tasks. This repo covers the backend only: schema design, Supabase configuration, and a Postman test suite that exercises every concept.
+<p align="center">
+  Environmental intelligence for gardeners, growers, and small-scale food producers.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/PostgreSQL-16+-316192?logo=postgresql&logoColor=white">
+  <img src="https://img.shields.io/badge/Supabase-Backend-3ECF8E?logo=supabase&logoColor=white">
+  <img src="https://img.shields.io/badge/PostgREST-API-orange">
+  <img src="https://img.shields.io/badge/Auth-JWT-success">
+  <img src="https://img.shields.io/badge/Security-RLS-red">
+  <img src="https://img.shields.io/badge/Status-MVP-blue">
+</p>
 
 ---
 
-## Stack
+## Overview
 
-| Layer | Technology |
-|-------|-----------|
-| Database | PostgreSQL (Supabase managed) |
-| API | PostgREST (auto-generated REST from schema) |
-| Auth | Supabase Auth (JWT) |
-| Security | Row-level security policies |
-| Testing | Postman |
+FirstFrost is a garden intelligence platform built to help growers organize plants, monitor environmental conditions, and make better seasonal decisions.
+
+The platform combines structured plant tracking, environmental measurements, and task management into a single system designed around real growing workflows.
+
+This repository contains the backend implementation including:
+
+* PostgreSQL schema design
+* Supabase configuration
+* Row-Level Security policies
+* Database automation and triggers
+* Seed data
+* Postman API test suite
 
 ---
 
-## Schema
+## Why FirstFrost?
 
-Five tables. Three levels of nesting. Every arrow is a foreign key.
+Successful growing depends on timing.
 
+Gardeners constantly balance:
+
+* Frost dates
+* Seasonal changes
+* Growth stages
+* Environmental measurements
+* Watering schedules
+* Harvest timing
+
+Most gardening tools focus on reminders.
+
+FirstFrost focuses on environmental awareness.
+
+The long-term goal is to create an offline-capable gardening platform that helps growers understand not only what is happening, but why.
+
+---
+
+## Core Features
+
+### Space Management
+
+Track multiple growing environments:
+
+* Raised beds
+* Greenhouses
+* Grow tents
+* Hydroponic systems
+* Indoor gardens
+* Container gardens
+
+### Plant Tracking
+
+Monitor plants through every stage of growth:
+
+```text
+Seed
+ ↓
+Seedling
+ ↓
+Vegetative
+ ↓
+Flowering
+ ↓
+Fruiting
+ ↓
+Harvest
 ```
+
+### Environmental Logging
+
+Store measurements such as:
+
+* pH
+* EC
+* Temperature
+* Humidity
+* Custom metrics
+
+### Care Management
+
+Organize:
+
+* Watering
+* Fertilization
+* Pruning
+* Pest control
+* Harvest schedules
+
+---
+
+## Architecture
+
+```text
 auth.users
-    └──< profiles
-             └──< spaces
-                      ├──< plants
-                      │        └──< data_logs  (append-only)
-                      └──< tasks
+    └── profiles
+            └── spaces
+                    ├── plants
+                    │      └── data_logs
+                    │
+                    └── tasks
 ```
 
-### Tables
+### Core Tables
 
-| Table | Purpose |
-|-------|---------|
-| `profiles` | One row per user, extends auth.users |
-| `spaces` | Growing environments: raised beds, grow tents, windowsills |
-| `plants` | Crops growing inside a space |
-| `data_logs` | Sensor readings tied to a plant, append-only |
-| `tasks` | Care reminders tied to a space, optionally to a plant |
+| Table     | Purpose                       |
+| --------- | ----------------------------- |
+| profiles  | User profile information      |
+| spaces    | Growing environments          |
+| plants    | Plants within a space         |
+| data_logs | Environmental readings        |
+| tasks     | Care activities and reminders |
 
-### ENUMs
+---
 
-| Type | Values |
-|------|--------|
-| `space_type` | outdoor, indoor, both |
-| `growth_stage` | seed, seedling, vegetative, flowering, fruiting, harvest, dormant |
-| `metric_type` | ph, ec, temperature, humidity, custom |
-| `task_status` | pending, complete, skipped |
+## Technology Stack
 
-### Key design decisions
+| Layer          | Technology     |
+| -------------- | -------------- |
+| Database       | PostgreSQL     |
+| Backend        | Supabase       |
+| API            | PostgREST      |
+| Authentication | Supabase Auth  |
+| Authorization  | PostgreSQL RLS |
+| Testing        | Postman        |
+| Storage        | JSONB          |
+| Identifiers    | UUID v4        |
 
-- UUID primary keys via `gen_random_uuid()` — no sequential IDs exposed
-- `NUMERIC` for sensor values — exact decimal precision, no float rounding
-- `TIMESTAMPTZ` for all timestamps — UTC stored, timezone-aware
-- `DATE` for `planted_date` — calendar date only, no false time precision
-- `tasks.plant_id` is nullable with `ON DELETE SET NULL` — deleting a plant preserves task history
-- `data_logs` is append-only — no `UPDATE` policy deployed by design
-- `completed_at` on tasks is set by trigger, never by the client
+---
+
+## Security
+
+Security is enforced directly at the database layer.
+
+Every user can only access data they own through Row-Level Security policies.
+
+Protected resources include:
+
+* Profiles
+* Spaces
+* Plants
+* Tasks
+* Data logs
+
+No application-side filtering required.
 
 ---
 
 ## Repository Structure
 
-```
+```text
 firstfrostmvp/
+│
 ├── sql/
-│   ├── 01_enums.sql
-│   ├── 02_tables.sql
-│   ├── 03_demo_ddl.sql
-│   ├── 04_seed.sql
-│   ├── 05_integrity_tests.sql
-│   ├── 06_triggers.sql
-│   ├── 07_rls.sql
-│   ├── 08_verify.sql
-│   ├── 09_seed_perf.sql
-│   ├── 10_indexes.sql
-│   ├── 11_jsonb.sql
-│   └── 12_queries.sql
 ├── postman/
-│   └── firstfrost.postman_collection.json
 ├── docs/
-│   └── type-decisions.md
 ├── DEVLOG.md
 ├── CHANGELOG.md
 └── README.md
@@ -90,42 +184,41 @@ firstfrostmvp/
 
 ---
 
-## Setup
+## Development Roadmap
 
-### 1. Supabase project
+### Current 
 
-Create a new project at [supabase.com](https://supabase.com) named `xxxx`. Select the region closest to you. Save the database password somewhere secure.
+* [ ] Schema design
+* [ ] Foreign key architecture
+* [ ] RLS implementation
+* [ ] Trigger automation
+* [ ] Seed data
+* [ ] Postman testing
 
-From **Settings → API**, copy the Project URL and anon key. You will need both for the Postman environment.
+### Planned 
 
-### 2. Run SQL in order
-
-Open the Supabase SQL Editor and run each file from the `sql/` directory in numbered order. Do not skip steps — later files depend on earlier ones.
-
-### 3. Postman
-
-Import `postman/firstfrost.postman_collection.json`. Create an environment with:
-
-| Variable | Value |
-|----------|-------|
-| `baseUrl` | Your Supabase Project URL |
-| `anonKey` | Your Supabase anon key |
-| `accessToken` | Set automatically by pre-request script after auth |
-
-Run the auth request first to populate `accessToken`, then work through the collection in order.
+* [ ] Flutter mobile app
+* [ ] Offline synchronization
+* [ ] Frost alerts
+* [ ] Weather integrations
+* [ ] Plant encyclopedia
 
 ---
 
-## Notes
+## Documentation
 
-Supabase pauses free tier projects after 7 days of inactivity. Data is preserved — resume from the dashboard.
-
-The `service_role` key bypasses RLS entirely. Do not put it in the Postman collection.
+| Document                 | Description                         |
+| ------------------------ | ----------------------------------- |
+| docs/design-decisions.md | Database and architecture rationale |
+| DEVLOG.md                | Development journal                 |
+| CHANGELOG.md             | Release history                     |
 
 ---
 
-## Related
+## Vision
 
-- [Wiki](../../wiki) — build log, schema notes, Postman notes, blockers and fixes
-- [Build plan](firstfrost-build-plan.md) — nine-step build order
-- [AD350 course repo](https://github.com/givecoffee/AD350)
+FirstFrost is being designed as a practical environmental intelligence platform for growers.
+
+By combining weather awareness, plant tracking, environmental monitoring, and offline-first mobile technology, the goal is to help gardeners make better decisions before conditions become problems.
+
+Built with PostgreSQL, Supabase, and respect for the first frost of the season.
