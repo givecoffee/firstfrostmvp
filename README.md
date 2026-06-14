@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <sub> Stock Images (left to right) credits Maya Schwarzer and Benjamin Combs. </sub>
+  <sub> Stock Images (left to right) credits: Maya Schwarzer and Benjamin Combs. </sub>
 </p>
 
 <h3 align="center">
