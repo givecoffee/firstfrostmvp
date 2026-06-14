@@ -11,7 +11,11 @@
 </h3>
 
 <p align="center">
-  Environmental intelligence for gardeners, growers, and small-scale food producers. Visit the Wiki [here](https://github.com/givecoffee/firstfrostmvp/wiki).
+  Environmental intelligence for gardeners, growers, and small-scale food producers. 
+</p>
+
+<p align="center">
+  Check out the Wiki: https://github.com/givecoffee/firstfrostmvp/wiki  
 </p>
 
 <p align="center">
@@ -226,3 +230,4 @@ FirstFrost is being designed as a practical environmental intelligence platform 
 By combining weather awareness, plant tracking, environmental monitoring, and offline-first mobile technology, the goal is to help gardeners make better decisions before conditions become problems.
 
 Built with PostgreSQL, Supabase, and respect for the first frost of the season.
+
