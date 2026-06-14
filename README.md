@@ -12,6 +12,7 @@
 
 <p align="center">
   Environmental intelligence for gardeners, growers, and small-scale food producers.
+  GitHub Wiki: https://github.com/givecoffee/firstfrostmvp/wiki 
 </p>
 
 <p align="center">
