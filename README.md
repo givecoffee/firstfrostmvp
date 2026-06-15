@@ -142,6 +142,18 @@ auth.users
 | data_logs | Environmental readings        |
 | tasks     | Care activities and reminders |
 
+### Key Design Decisions
+
+| Decision | Choice | Reason |
+|----------|--------|--------|
+| Primary keys | UUID v4 | No sequential IDs exposed |
+| Sensor values | NUMERIC | Exact decimal precision, no float rounding |
+| Timestamps | TIMESTAMPTZ | Timezone-aware, stored in UTC |
+| Planted date | DATE | Calendar date only, no false time precision |
+| tasks.plant_id | Nullable, ON DELETE SET NULL | Deleting a plant preserves task history |
+| data_logs | Append-only, no UPDATE policy | Sensor readings are immutable facts |
+| completed_at | Set by trigger, not client | Timestamp is trustworthy, not spoofable |
+
 ---
 
 ## Technology Stack
@@ -175,6 +187,29 @@ Protected resources include:
 
 No application-side filtering required.
 
+RLS failures return 200 with an empty array, not 403. This is PostgREST behavior by design — the database enforces ownership silently.
+
+---
+
+## Setup
+
+### Prerequisites
+
+* Supabase account (free tier)
+* Postman
+
+### Steps
+
+1. Create a new Supabase project
+2. Open the SQL Editor and run each file in `sql/` in numbered order
+3. Copy your Project URL and anon key from Settings → API
+4. Import `postman/firstfrost.postman_collection.json` into Postman
+5. Import `postman/firstfrost.environment.json` and fill in `baseUrl` and `anonKey`
+6. Run `Auth: Sign In` to populate the access token
+7. Run remaining requests in order
+
+Do not enable RLS through the Supabase UI during table creation. RLS is enabled by `sql/07_rls.sql` with the full policy set in place.
+
 ---
 
 ## Repository Structure
@@ -183,8 +218,26 @@ No application-side filtering required.
 firstfrostmvp/
 │
 ├── sql/
+│   ├── 01_enums.sql           — four custom ENUM types
+│   ├── 02_tables.sql          — five core tables in dependency order
+│   ├── 03_demo_ddl.sql        — ALTER TABLE, TRUNCATE vs DROP demo
+│   ├── 04_seed.sql            — baseline test data
+│   ├── 05_integrity_tests.sql — FK violation, CASCADE, SET NULL tests
+│   ├── 06_triggers.sql        — three trigger functions
+│   ├── 07_rls.sql             — RLS enable and 15 policies
+│   ├── 08_verify.sql          — schema verification queries
+│   ├── 09_seed_perf.sql       — 100K data_logs rows for EXPLAIN ANALYZE
+│   ├── 10_indexes.sql         — B-Tree and GIN indexes
+│   ├── 11_jsonb.sql           — JSONB metadata column and GIN index
+│   └── 12_queries.sql         — filtering, JOIN, and aggregation queries
+│
 ├── postman/
+│   ├── firstfrost.postman_collection.json
+│   └── firstfrost.environment.json
+│
 ├── docs/
+│   └── design-decisions.md
+│
 ├── DEVLOG.md
 ├── CHANGELOG.md
 └── README.md
@@ -196,12 +249,14 @@ firstfrostmvp/
 
 ### Current 
 
-* [ ] Schema design
-* [ ] Foreign key architecture
-* [ ] RLS implementation
-* [ ] Trigger automation
-* [ ] Seed data
-* [ ] Postman testing
+* [x] Schema design
+* [x] Foreign key architecture
+* [x] RLS implementation
+* [x] Trigger automation
+* [x] Seed data
+* [x] Postman testing
+* [x] JSONB metadata with GIN index
+* [x] B-Tree index with EXPLAIN ANALYZE verification
 
 ### Planned 
 
@@ -230,4 +285,3 @@ FirstFrost is being designed as a practical environmental intelligence platform 
 By combining weather awareness, plant tracking, environmental monitoring, and offline-first mobile technology, the goal is to help gardeners make better decisions before conditions become problems.
 
 Built with PostgreSQL, Supabase, and respect for the first frost of the season.
-
